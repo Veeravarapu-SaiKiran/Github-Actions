@@ -1,7 +1,7 @@
 name: Schedule Event Workflow # Name of the workflow
 on:
   schedule:
-    - cron: '0/1 * * * 0,2' # Schedule event on specific time
+    - cron: '0/1 * * * *' # Schedule event on specific time
 
 jobs:
   hello_world: # Job name
