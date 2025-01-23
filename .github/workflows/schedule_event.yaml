@@ -1,4 +1,11 @@
-name: Schedule Event Workflow
+name: Schedule Event Workflow # Name of the workflow
 on:
   schedule:
-    - cron: 
+    - cron: '0/1 * * * 0,2' # Schedule event on specific time
+
+jobs:
+  hello_world: # Job name
+    runs-on: ubuntu-latest # Use this image to craete container
+    steps:
+      - name: Display current date
+        run: echo "At present date is $(date)" 
