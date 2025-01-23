@@ -8,5 +8,4 @@ jobs:
     runs-on: ubuntu-latest # Use this image to craete container
     steps:
       - name: Display current date
-        run: echo "At present date is $(date)" 
-
+        run: echo "At present date is $(date)"
