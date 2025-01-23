@@ -1,0 +1,17 @@
+name: Multi Event Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - dev
+      - main
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show present working dir and date
+        run: echo "pwd $(pwd) current date time $(date)"
