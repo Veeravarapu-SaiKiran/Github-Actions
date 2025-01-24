@@ -1,0 +1,33 @@
+name: Manual Trigger with Params through workflow_dispatch event
+# Manual trigger through github cli
+# gh workflow run manual_event.yaml -f name=mona -f greeting=hello -F data=@file-name
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name of the person to greet'
+        required: true
+        type: string
+      greeting:
+        description: 'type of Geeting message'
+        required: true
+        type: string
+      data:
+        description: 'base64 encoded content of a file'
+        required: false
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decode file content
+        run: |
+          echo "${{ inputs.data }}" | base64 --decode > ./decode_file.txt
+      - name: Display greeting from inputs
+        run: |
+          echo "Hello ${{ inputs.name }} ${{ inputs.greeting }}"
+      - name: Display file content
+        run: |
+          echo "Display contents of a file"
+          cat decode_file.txt
