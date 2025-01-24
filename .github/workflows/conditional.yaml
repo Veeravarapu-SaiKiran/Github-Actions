@@ -1,0 +1,14 @@
+name: Push event with conditionals
+on: [push]
+jobs:
+  hello_world:
+    if: github.repository == 'saikiran/Github-Actions'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello world"
+  goodbye_moon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Goodbye Moon"
+        run: echo "Goodbye Moon"
