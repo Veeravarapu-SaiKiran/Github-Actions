@@ -1,0 +1,17 @@
+name: Create dependecy between jobs
+on: [push]
+
+jobs:
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display hostname of job2
+        run: |
+          echo "Hostname2: $(hostname)"
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Display hostname of job1
+          run: |
+            echo "Hostname1: $(hostname)"
