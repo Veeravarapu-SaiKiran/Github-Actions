@@ -1,0 +1,18 @@
+name: Group vars env vars
+on: [push]
+jobs:
+  variable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set env var
+        run: |
+          echo "My_APP=DB" >> $GITHUB_ENV
+      - name: Display $GITHUB_ENV
+        run: |
+          echo $My_APP
+      - name: Set group vars
+        run: |
+          echo "::group::My group message"
+          echo "Msg 1"
+          echo "Msg 2"
+          echo "::endgroup::"
