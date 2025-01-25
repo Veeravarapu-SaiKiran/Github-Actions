@@ -1,5 +1,5 @@
 name: MacOS runner
-on: [pull_request]
+on: [push]
 jobs:
   macos_runner:
     runs-on: macos-latest
