@@ -1,0 +1,27 @@
+name: Access Github information in workflows, actions, env variables,jobs,steps
+on: [push]
+env:
+  teir_1: DB
+  teir_2: Frontend
+  teir_3: Backend
+jobs:
+  context_info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display github context info
+        run: |
+          echo "github repository url :  ${{ github.repositoryUrl }}"
+          echo "github user who triggered this workflow :  ${{ github.actor}}"
+          echo "github uevent name :  ${{ github.event_name }}"
+      - name: Display Environment context info
+        run: |
+          echo "ENV :  ${{ env.teir_1 }}"
+          echo "ENV :  ${{ env.teir_2}}"
+          echo "ENV :  ${{ env.teir_3 }}"
+      - name: Reading secrets
+        shell: bash
+        env:
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          echo "Display token secret ${{ secrets.GITHUB_TOKEN }}"
+          echo "Display $DB_PASSWORD"
