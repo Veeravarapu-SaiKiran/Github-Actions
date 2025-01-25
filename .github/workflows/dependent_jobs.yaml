@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Display hostname of job2
         run: |
-          ede
+          echo "Hostname2: $(hostname)"
   job1:
     runs-on: ubuntu-latest
     steps:
