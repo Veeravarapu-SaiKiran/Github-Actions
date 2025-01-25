@@ -1,0 +1,21 @@
+name: MacOS runner
+on: [pull_request]
+jobs:
+  macos_runner:
+    runs-on: macos-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+      - name: Create a swift file
+        run: |
+          touch hello.swift | echo 'print("Hello from macos swift")' > hello.swift
+      - name: Install dependencies
+        run: |
+          brew install swiftlint
+          swift --version
+      - name: Run swiftlint
+        run: swiftlint
+      - name: compile and run swift hello program
+        run: |
+          swiftc hello.swift
+          ./hello
