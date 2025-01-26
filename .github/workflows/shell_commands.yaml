@@ -1,0 +1,17 @@
+name: Shell Commands
+on: [push]
+jobs:
+  shell_commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo strings
+        run: echo "Welcome to Devops"
+      - name: Multiline script
+        run: |
+          node -v
+          npm -v
+      - name: python commands
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python3

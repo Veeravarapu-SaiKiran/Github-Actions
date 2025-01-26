@@ -23,3 +23,6 @@ Read Docs: https://docs.github.com/en/actions/about-github-actions/understanding
 * Scheduled times
 * manual
 
+# JAVA with Maven project
+
+https://github.com/Veeravarapu-SaiKiran/Java-Maven
