@@ -14,4 +14,4 @@ jobs:
         run: |
           import platform
           print(platform.processor())
-        shell: python3
+        shell: python
