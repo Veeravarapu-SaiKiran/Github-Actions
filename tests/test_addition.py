@@ -1,4 +1,4 @@
-from main import add
+from addition import add
 
 def test_add():
     # Test case 1: Adding positive numbers
