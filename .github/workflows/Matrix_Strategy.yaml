@@ -11,6 +11,6 @@ jobs:
       - name: Setup nodejs
         uses: actions/setup-node@v3
         with:
-          node_version: 8
+          node-version: 18
       - name: node js version after installation
         run: node -v
