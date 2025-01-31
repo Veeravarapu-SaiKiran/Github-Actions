@@ -1,0 +1,29 @@
+name: Encrypt and Decrypt PHP File
+
+on: [push]
+
+jobs:
+  encrypt_decrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Encrypt index.php
+        run: |
+          gpg --batch --passphrase "${{ secrets.GPG_PASSPHRASE }}" --symmetric --cipher-algo AES256 index.php
+          echo "File Encrypted: index.php.gpg"
+      
+      - name: Store Encrypted File as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: encrypted-php-file
+          path: index.php.gpg
+
+      - name: Decrypt index.php
+        run: |
+          gpg --batch --yes --passphrase "${{ secrets.GPG_PASSPHRASE }}" --output index.php --decrypt index.php.gpg
+          echo "File Decrypted: index.php"
+
+      - name: Display Decrypted Content
+        run: cat index.php
