@@ -1,0 +1,16 @@
+name: Setup Node Js with version 20
+on:
+  push:
+    branches: [main]
+jobs:
+  install_specific_nodejs_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display current node js version
+        run: node -v
+      - name: Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node_version: 8
+      - name: node js version after installation
+        run: node -v
