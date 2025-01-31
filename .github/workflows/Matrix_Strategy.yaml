@@ -6,8 +6,9 @@ jobs:
   install_specific_nodejs_version:
     strategy:
       matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
         node-version: [14, 15, 16]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Display current node js version
         run: |
