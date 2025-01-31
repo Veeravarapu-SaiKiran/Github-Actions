@@ -1,4 +1,4 @@
-name: Custom env variables with all scopes
+name: Custom/Default env variables with all scopes
 on: [push]
 env:
   greetings: Hello world!
