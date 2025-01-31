@@ -8,7 +8,12 @@ jobs:
     env:
       job_username: Saikiran
     steps:
-      - name: Accessing env variables
+      - name: Accessing custom env variables
         run: echo "$greetings  $job_username and $step_username"
         env:
           step_username: Veeravarapu
+      - name: Default env variables
+        run: |
+          echo "GITHUB_ACTION: $GITHUB_ACTION"
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "branch: $GITHUB_REF"
