@@ -4,13 +4,20 @@ on:
     branches: [main]
 jobs:
   install_specific_nodejs_version:
+    strategy:
+      matrix:
+        node-version: [14, 15, 16]
     runs-on: ubuntu-latest
     steps:
       - name: Display current node js version
-        run: node -v
+        run: |
+          hostname
+          node -v
       - name: Setup nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
       - name: node js version after installation
-        run: node -v
+        run: |
+          hostname
+          node -v
