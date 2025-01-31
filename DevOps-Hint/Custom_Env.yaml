@@ -1,0 +1,14 @@
+name: Custom env variables with all scopes
+on: [push]
+env:
+  greetings: Hello world!
+jobs:
+  custom_env:
+    runs-on: ubuntu-latest
+    env:
+      job_username: Saikiran
+    steps:
+      - name: Accessing env variables
+        run: echo "$greetings  $job_username and $step_username"
+        env:
+          step_username: Veeravarapu

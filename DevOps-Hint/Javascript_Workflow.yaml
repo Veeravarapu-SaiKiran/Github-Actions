@@ -1,0 +1,13 @@
+name: Java Script Workflow
+on: [push]
+jobs:
+  javascript_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple javascript app
+        id: hello
+        uses: actions/hello-world-javascript-action@v1
+        with: 
+          who-to-greet: Hello World
+      - name: Get ouput run time
+        run: echo "${{ steps.hello.output.time }}"

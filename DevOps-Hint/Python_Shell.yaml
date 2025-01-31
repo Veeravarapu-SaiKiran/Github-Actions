@@ -1,0 +1,15 @@
+name: Inline Shell workflow
+on: [push]
+jobs:
+  python_inline_shell_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display hostname
+        run: echo "Hostname: $(hostname)"
+      - name: Show running processor using python code through inline shell
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
+
+        

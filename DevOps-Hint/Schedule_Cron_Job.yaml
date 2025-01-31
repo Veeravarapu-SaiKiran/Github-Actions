@@ -1,0 +1,20 @@
+name: Schedule cron job
+on: [pull_request]
+on:
+  pull_request:
+    types: [open, closed, reopened]
+  schedule:
+    - cron: '*/5 * * * *' # Schedule event on specific time
+jobs:
+  pr_schedule_cron_job:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Echo mulitple commands
+          id: hello
+          run: |
+            pwd
+            hostname
+            ifconfig
+            ls -ltr
+        - name: Get the command executed time
+          run: echo "${{ steps.id.hello.output.time }}"

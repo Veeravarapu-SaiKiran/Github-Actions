@@ -1,0 +1,20 @@
+name: Filter branches, tags, paths
+on:
+  pull_request:
+    branches:
+      - main  # matches branch name with main
+      - demo/* # matches branch name with demo/*
+      - '!dev' # ignore dev branch
+
+    tags:
+      - v1.*
+
+    paths:
+      - "**.js"
+      - "**.py"
+jobs:
+  run_echo_command:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Show hostname
+          run: echo "Hostname: $(hostname)"
