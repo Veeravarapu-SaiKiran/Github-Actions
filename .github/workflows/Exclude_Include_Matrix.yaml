@@ -1,0 +1,30 @@
+name: Include/Exclude Matrix
+on: [push]
+jobs:
+  include_exclude_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node_version: [6,7,8]
+      include:
+        - os: ubuntu-latest
+          node_version: 8
+          ubuntu_8: true
+      exclude:
+        - os: ubuntu-latest
+          node_version: 7
+        - os: macos-latest
+          node_version: 6
+    runs-on: ${{ matrix.os }}
+    env:
+      UBUNTU_8: ${{ matrix.ubuntu_8 }}
+    steps:
+      - name: Current node version
+        run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: After setup node with different version
+        run: |
+          node -v
+          echo $UBUNTU_8
