@@ -5,19 +5,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        node_version: [6,7,8]
+        node_version: [16, 18, 20]
         include:
           - os: ubuntu-latest
-            node_version: 8
-            ubuntu_8: true
+            node_version: 20
+            ubuntu_20: true
         exclude:
           - os: ubuntu-latest
-            node_version: 7
+            node_version: 16
           - os: macos-latest
-            node_version: 6
+            node_version: 18
     runs-on: ${{ matrix.os }}
     env:
-      UBUNTU_8: ${{ matrix.ubuntu_8 }}
+      UBUNTU_20: ${{ matrix.ubuntu_20 }}
     steps:
       - name: Current node version
         run: node -v
@@ -27,4 +27,4 @@ jobs:
       - name: After setup node with different version
         run: |
           node -v
-          echo $UBUNTU_8
+          echo $UBUNTU_20
