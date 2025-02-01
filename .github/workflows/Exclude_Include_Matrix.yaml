@@ -31,6 +31,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: After setup node with different version
+        shell: bash
         run: |
           node -v
           echo $UBUNTU_20
